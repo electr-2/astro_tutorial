@@ -1,5 +1,18 @@
 ---
+import "../styles/global.css";
+const pageTitle = "about me";
 
+const identity = {
+    name: "Astro",
+    age: 1,
+    hobbies: ["programming", "reading", "sports"],
+};
+const happy = false;
+const finished = false;
+const goal = 3;
+const hobbyColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
 
 <html lang="ja">
@@ -8,12 +21,45 @@
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>about</title>
+        <style define:vars={{ hobbyColor, fontWeight, textCase }}>
+            h1 {
+                color: purple;
+                font-size: 4rem;
+            }
+            .hobby {
+                color: var(--hobbyColor);
+                font-weight: var(--fontWeight);
+                text-transform: var(--textCase);
+            }
+        </style>
     </head>
     <body>
         <h1>Astroサイト</h1>
-        <h1>私について</h1>
+        <h1>{pageTitle}</h1>
         <h2>～そして私のサイトについて～</h2>
         <p>Astro入門なう</p>
+        {identity.hobbies.map((hobby) => <p class="hobby">趣味: {hobby}</p>)}
+        {
+            happy && (
+                <p>I am happy to be learning Astro! Astroを学べて幸せです！</p>
+            )
+        }
+
+        {
+            finished && (
+                <p>
+                    I finished this tutorial! このチュートリアルを終えました！
+                </p>
+            )
+        }
+
+        {
+            goal === 3 ? (
+                <p>My goal is to finish in 3 days. 3日で終えるのが目標です。</p>
+            ) : (
+                <p>My goal is not 3 days. 3日が目標ではありません。</p>
+            )
+        }
         <a href="/">index.html</a>
     </body>
 </html>
