@@ -1,7 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Greeting from "../components/Greeting";
 ---
 
 <BaseLayout>
 	<h2>トップページ</h2>
+	<Greeting
+		client:load
+		messages={["Hello World!", "こんにちは", "ロウワー", "zexal"]}
+	/>
 </BaseLayout>
