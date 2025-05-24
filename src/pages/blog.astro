@@ -10,7 +10,7 @@ const pageTitle = "私のAstro学習ブログ";
     <ul>
         {
             allPosts.map((post) => (
-                <BlogPost url = {post.url} title = {post}
+                <BlogPost url={post.url} title={post.frontmatter.title} />
             ))
         }
     </ul>
